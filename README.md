@@ -45,6 +45,11 @@ changes
 <td></td>
 </tr>
 <tr>
+<td>Define a Student </td>
+<td align="center">X</td>
+<td></td>
+</tr>
+<tr>
 <td>Define a Rubric </td>
 <td align="center">X</td>
 <td></td>
@@ -150,6 +155,11 @@ control project resources and meet time constraints.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Define a Student </td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
 <tr>
 <td>Define a Rubric </td>
 <td align="center">3</td>
