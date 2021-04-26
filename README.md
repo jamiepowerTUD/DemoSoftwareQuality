@@ -229,8 +229,7 @@ calculations on them to create the summary which is a more cumbersome task.
 By defining an effort metric, we can also calculate the velocity of our sprints by comparing
 the total number of units achieved by the number of sprints completed. If our project went 
 as expected we should observe a velocity of 3 (46 / 3). Velocity acts as a feedback mechanism  
-for teams by giving them a tangible measure of progress, it is expected so be slightly volatile
-but a well-organised team should expect an average downward trend of 10% when being examined on 
+for teams by giving them a tangible measure of progress, it is expected so be slightly volatile, but a well-organised team should expect an average downward trend of 10% when being examined on 
 a burndown chart.
 
 
