@@ -12,6 +12,7 @@ public class Rubric
     public Rubric(String title)
     {
         this.title = title ;
+        criteria = new ArrayList<Criterion>();
     }
 
     public String getTitle() {

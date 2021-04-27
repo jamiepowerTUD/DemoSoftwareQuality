@@ -45,24 +45,24 @@ changes
 <td></td>
 </tr>
 <tr>
-<td>Define a Student </td>
-<td align="center">X</td>
-<td></td>
+<td>Define a Grade </td>
+<td align="center"></td>
+<td>X</td>
 </tr>
 <tr>
 <td>Define a Rubric </td>
-<td align="center">X</td>
-<td></td>
+<td align="center"></td>
+<td>X</td>
 </tr>
 <tr>
 <td>Define a Criterion</td>
-<td align="center">X</td>
-<td></td>
+<td align="center"></td>
+<td>X</td>
 </tr>
 <tr>
 <td>Define a Student Grade</td>
-<td align="center">X</td>
-<td></td>
+<td align="center"></td>
+<td>X</td>
 </tr>
 <tr>
 <td> <b>Adding and Searching features </b> </td>
@@ -156,7 +156,7 @@ control project resources and meet time constraints.
 </thead>
 <tbody>
 <tr>
-<td>Define a Student </td>
+<td>Define a Grade </td>
 <td align="center">3</td>
 <td align="center">2</td>
 </tr>
@@ -243,8 +243,8 @@ for teams by giving them a tangible measure of progress, it is expected so be sl
 a burndown chart.
 
 
-
 ###References 
+
 
 [Effective Sprint Backlog](https://www.sealights.io/sprint-velocity/the-sprint-backlog-why-its-important-and-how-to-make-it-great/)
 [Agile Metrics](https://www.atlassian.com/agile/project-management/metrics)
