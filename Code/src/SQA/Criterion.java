@@ -2,7 +2,6 @@ package SQA;
 
 public class Criterion {
 
-
     String title ;
     int score ;
 
