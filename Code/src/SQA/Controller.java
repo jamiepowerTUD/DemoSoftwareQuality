@@ -16,6 +16,7 @@ public class Controller {
 
 
 
+    // Method receives a name of a Rubric and adds it to a list of Rubrics
     public Rubric addRubric(String name)
     {
         Rubric rubric = new Rubric(name);
@@ -26,29 +27,34 @@ public class Controller {
 
 
 
+    // Method receives the name of a Rubric,
     public String addCriterion(String rubric , String criterion)
     {
         String response = "" ;
         boolean found = false ;
-
         for(Rubric rub : rubrics)
         {
             if(rub.title.equalsIgnoreCase(rubric)) {
-                Criterion criteria = new Criterion(criterion,0);
-                rub.getCriteria().add(criteria);
-                found = true ;
-                response = "Criteria Added" ;
+                if(rub.getCriteria().size() == 10)
+                {
+                    response = "Rubric Full" ;
+                    found = true ;
+                }
+                else {
+                        Criterion criteria = createCriterion(criterion);
+                        rub.getCriteria().add(criteria);
+                        found = true ;
+                        response = "Criteria Added" ; }
             }
         }
-
         if(!found){
             response = "Rubric not found" ;
         }
-
-
         return response ;
     }
 
+
+    // Lists all existing Rubrics with their criterion
     public void listAllRubrics()
     {
         if(rubrics.size() != 0)
@@ -79,7 +85,7 @@ public class Controller {
 
     }
 
-
+    // Takes the name of a rubric and returns it if found, null if not
     public Rubric getRubricbyName(String name)
     {
         Rubric rubric = null ;
@@ -95,6 +101,38 @@ public class Controller {
     }
 
 
+    // Simple instantiation method to create a Criterion and return it
+    public Criterion createCriterion(String name)
+    {
+        return new Criterion(name,0);
+    }
+
+
+    public boolean validateString(String word)
+    {
+        boolean result = true ;
+
+        if (word.isEmpty())
+            result = false ;
+        else
+        {
+            try {
+                Integer.parseInt(word);
+                result = false ;
+            } catch(NumberFormatException e){
+
+            }
+
+            try {
+                Double.parseDouble(word);
+                result = false ;
+            } catch(NumberFormatException e){
+            }
+        }
+
+
+        return  result ;
+    }
 
 
 
