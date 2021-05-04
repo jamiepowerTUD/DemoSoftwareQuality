@@ -5,9 +5,10 @@ public class Grade {
     String name ;
     Rubric rubric ;
 
-    public Grade(String name)
+    public Grade(String name, Rubric rubric)
     {
         this.name = name ;
+        this.rubric = rubric ;
     }
 
     public String getName() {
