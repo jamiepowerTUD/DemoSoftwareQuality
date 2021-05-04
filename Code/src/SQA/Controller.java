@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Controller {
 
-    Scanner scan = new Scanner(System.in);
     ArrayList<Rubric> rubrics = new ArrayList<>();
+    ArrayList<Grade> grades = new ArrayList<>();
+
+
 
     public Controller()
     {
@@ -15,14 +17,19 @@ public class Controller {
     }
 
 
-
     // Method receives a name of a Rubric and adds it to a list of Rubrics
     public Rubric addRubric(String name)
     {
         Rubric rubric = new Rubric(name);
         rubrics.add(rubric);
-        System.out.println("Creating rubric......");
         return rubric;
+    }
+
+    public Grade addGrade(String name, Rubric rubric)
+    {
+        Grade grade = new Grade(name,rubric);
+        grades.add(grade);
+        return grade ;
     }
 
 
@@ -54,35 +61,10 @@ public class Controller {
     }
 
 
-    // Lists all existing Rubrics with their criterion
-    public void listAllRubrics()
+    // Returns a list of all existing Rubrics
+    public ArrayList<Rubric> listAllRubrics()
     {
-        if(rubrics.size() != 0)
-        {
-            System.out.println("**** All Rubrics ****");
-            for(Rubric rubric:rubrics) {
-
-                System.out.println(rubric.getTitle());
-                if(rubric.getCriteria().isEmpty())
-                {
-                    System.out.println("No Criterion defined");
-                }
-                else
-                {
-                    for (Criterion cr : rubric.getCriteria()) {
-                        System.out.println(cr.title);
-                    }
-                }
-
-            }
-        }
-        else
-        {
-            System.out.println("No Rubrics on system");
-        }
-
-
-
+        return rubrics ;
     }
 
     // Takes the name of a rubric and returns it if found, null if not
@@ -108,6 +90,8 @@ public class Controller {
     }
 
 
+
+    // Validates whether a users input is a String or not
     public boolean validateString(String word)
     {
         boolean result = true ;
@@ -119,19 +103,54 @@ public class Controller {
             try {
                 Integer.parseInt(word);
                 result = false ;
-            } catch(NumberFormatException e){
+            } catch(NumberFormatException ignored){}
 
-            }
+
 
             try {
                 Double.parseDouble(word);
                 result = false ;
-            } catch(NumberFormatException e){
-            }
+            } catch(NumberFormatException ignored){ }
         }
 
 
         return  result ;
+    }
+
+
+
+    // Validates that a score given to grade a Student is a number between 1-5
+    public Boolean validateScore(String input)
+    {
+        boolean valid = true ;
+
+        if (!validateString(input))
+        {
+            int score = 0 ;
+            try {
+                score = Integer.parseInt(input);
+            } catch (NumberFormatException ignored){}
+
+
+            if(score < 1 || score > 5)
+            {
+                valid = false ;
+            }
+
+        }
+        else{
+            valid = false ;
+        }
+
+
+        return valid ;
+    }
+
+
+    // Returns a list of all existing student Grades
+    public ArrayList<Grade> listAllGrades()
+    {
+        return grades ;
     }
 
 
