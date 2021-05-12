@@ -2,25 +2,12 @@ package SQA;
 
 public class Criterion {
 
+    // A criterion with its title and a score, criterions will be initialised as 0
+    // and the score is given to graded students
 
     String title ;
     int score ;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 
     public Criterion(String title, int score)
     {
