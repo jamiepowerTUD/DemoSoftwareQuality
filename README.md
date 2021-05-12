@@ -3,9 +3,13 @@
 ### Introduction
 
 In this guide I will demonstrate Agile and Scrum best practices when it comes
-to Software Development including task estimation, testing and code reviews. This document
-is a reference on how to apply these practices in your own software projects as 
+to Software Development. This document is a reference on how to apply these
+ practices in your own software projects as 
 well outlining the benefits of doing so.
+
+Each commit in the repository will document and track the changes that occur in the 
+project overtime, and I will demonstrate how version control,GitFlow and code reviews 
+play a role in throughout the development cycle.
 
 <br>
 
@@ -108,11 +112,6 @@ changes
 <td align="center">X</td>
 </tr>
 <tr>
-<td>Define a Student Grade</td>
-<td align="center"></td>
-<td align="center">X</td>
-</tr>
-<tr>
 <td> <b>Adding and Searching features </b> </td>
 <td></td>
 <td></td>
@@ -150,8 +149,8 @@ changes
 </tr>
 <tr>
 <td>Get Grade By Rubric</td>
-<td align="center">X</td>
 <td align="center"></td>
+<td align="center">X</td>
 </tr>
 <tr>
 <tr>
@@ -160,19 +159,14 @@ changes
 <td></td>
 </tr>
 <tr>
-<td>Generate Graded Students Summary</td>
-<td align="center">X</td>
-<td align="center"></td>
-</tr>
-<tr>
 <td>Generate Rubric Summary</td>
-<td align="center">X</td>
 <td align="center"></td>
+<td align="center">X</td>
 </tr>
 <tr>
 <td>Generate Criterion Summary</td>
+<td align="center"></td>
 <td align="center">X</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -231,10 +225,6 @@ control project resources and meet time constraints **[2]**.
 <td align="center">2</td>
 </tr>
 <tr>
-<td>Define a Student Grade</td>
-<td align="center">3</td>
-<td align="center">2</td>
-<tr>
 <td>Create a new Rubric</td>
 <td align="center">1</td>
 <td align="center">1</td>
@@ -263,11 +253,6 @@ control project resources and meet time constraints **[2]**.
 <td>List all Student Grades</td>
 <td align="center">2</td>
 <td align="center">2</td>
-</tr>
-<tr>
-<td>Generate Graded Students Summary</td>
-<td align="center">9</td>
-<td align="center">5</td>
 </tr>
 <tr>
 <td>Generate Rubric Summary</td>
@@ -301,12 +286,14 @@ calculations on them to create the summary which is a more cumbersome task.
 #### Velocity
 
 By defining an effort metric, we can also calculate the **velocity** of our sprints by comparing
-the total number of units achieved by the number of sprints completed. If our project went 
-as expected we should observe a **velocity** of 3 (46 / 3). 
+the total number of units achieved by the number of sprints completed. We will split the tasks into 
+three sprints , object definition, object adding and retrieving and then summaries. Our expected velocity 
+is 12.33 (37 / 3), so the average amount of effort for each sprint will be 12.33. 
 
 **Velocity** acts as a feedback mechanism for teams by giving them a tangible measure of progress, 
 it is expected to be slightly volatile, but a well-organised team should expect an average downward 
-trend of 10% when being examined on a burn-down chart **[3]**.
+trend of 10% when being examined on a burn-down chart **[3]**. A low velocity can indicate that a team
+or developer is working inefficiently.
 
 <br>
 
