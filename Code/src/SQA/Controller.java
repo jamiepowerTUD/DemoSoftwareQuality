@@ -1,16 +1,18 @@
 package SQA;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
 
 public class Controller {
 
+    // Arrays to hold the Rubric and Graded Student Data
     ArrayList<Rubric> rubrics = new ArrayList<>();
     ArrayList<Grade> grades = new ArrayList<>();
 
 
 
+    // Empty Constructor for initialization
     public Controller()
     {
 
@@ -152,6 +154,243 @@ public class Controller {
     {
         return grades ;
     }
+
+
+    // Retrieves a Grade by the name of student given
+    public ArrayList<Grade> getGradesByRubricName(String name)
+    {
+        ArrayList<Grade> foundGrades = new ArrayList<>();
+
+        for (Grade grade : grades) {
+
+            if(grade.getRubric().title.equalsIgnoreCase(name))
+                foundGrades.add(grade);
+        }
+
+        return foundGrades ;
+    }
+
+    // Gets the average score across all graded Students
+    public double getRubricScoreAverage(String name)
+    {
+        int sum = 0 ;
+        int count = 0 ;
+        int avg = 0 ;
+
+
+        for (Grade grade : grades) {
+            if(grade.getRubric().title.equalsIgnoreCase(name))
+            {
+                for (Criterion criterion : grade.getRubric().getCriteria())
+                {
+                    sum += criterion.score;
+                    count ++ ;
+                }
+            }
+
+        }
+
+        if(sum != 0 && count != 0)
+        {
+            avg = sum/count ;
+        }
+
+
+        return avg ;
+    }
+
+
+    // Get the lowest score given to a student in a Rubric
+    public int getRubricMin(String name)
+    {
+        List<Integer> entries = new ArrayList<>();
+
+        for (Grade grade : grades)
+        {
+            if(grade.getRubric().title.equalsIgnoreCase(name))
+            {
+                for (Criterion criterion : grade.getRubric().getCriteria())
+                {
+                    entries.add(criterion.score);
+
+                }
+            }
+        }
+
+        return Collections.min(entries) ;
+    }
+
+
+    // Retrieve the highest score achieved in a specific Rubric
+    public int getRubricMax(String name)
+    {
+        List<Integer> entries = new ArrayList<>();
+
+        for (Grade grade : grades)
+        {
+            if(grade.getRubric().title.equalsIgnoreCase(name))
+            {
+                for (Criterion criterion : grade.getRubric().getCriteria())
+                {
+                    entries.add(criterion.score);
+                }
+            }
+
+        }
+
+        return Collections.max(entries);
+    }
+
+
+    // Get the Standard Deviation of all scores for a specific Rubric
+    public double getRubricStdDev(String name)
+    {
+        List<Integer> numArray = new ArrayList<>();
+
+        for (Grade grade : grades)
+        {
+            if(grade.getRubric().title.equalsIgnoreCase(name))
+            {
+                for (Criterion criterion : grade.getRubric().getCriteria())
+                {
+                    numArray.add(criterion.score);
+                }
+            }
+
+        }
+
+        double sum = 0.0, standardDeviation = 0.0;
+        int length = numArray.size();
+
+        for(double num : numArray) {
+            sum += num;
+        }
+
+        double mean = sum/length;
+
+        for(double num: numArray) {
+            standardDeviation += Math.pow(num - mean, 2);
+        }
+
+        return Math.sqrt(standardDeviation/length);
+
+    }
+
+
+    // Get the average of all scores for a given Criteria
+    public double getCriteriaAvg(String name)
+    {
+        int sum = 0 ;
+        int count = 0 ;
+        int avg = 0 ;
+
+        for(Grade grade : grades)
+        {
+            for (Criterion criterion : grade.getRubric().getCriteria()) {
+
+                if(criterion.title.equalsIgnoreCase(name))
+                {
+                   sum += criterion.score ;
+                   count ++ ;
+                }
+
+
+            }
+        }
+
+        if(sum != 0 && count != 0)
+        {
+            avg = sum/count ;
+        }
+
+
+        return avg ;
+    }
+
+
+    // Get the minimum score given for a certain Criteria
+    public int getCriterionMin(String name)
+    {
+        ArrayList<Integer> nums = new ArrayList<>();
+
+        for(Grade grade : grades)
+        {
+            for (Criterion criterion : grade.getRubric().getCriteria()) {
+
+                if(criterion.title.equalsIgnoreCase(name))
+                {
+                   nums.add(criterion.score);
+                }
+            }
+        }
+
+
+        return Collections.min(nums);
+    }
+
+    // Get the highest score given for a certain Criteria
+    public int getCriterionMax(String name)
+    {
+        ArrayList<Integer> nums = new ArrayList<>();
+
+        for(Grade grade : grades)
+        {
+            for (Criterion criterion : grade.getRubric().getCriteria()) {
+
+                if(criterion.title.equalsIgnoreCase(name))
+                {
+                    nums.add(criterion.score);
+                }
+            }
+        }
+
+
+        return Collections.max(nums);
+    }
+
+
+    // Calculate the Standard Deviation for a scores for a given Criterion
+    public double getCriterionStdDev(String name)
+    {
+        ArrayList<Integer> numArray = new ArrayList<>();
+
+        for(Grade grade : grades)
+        {
+            for (Criterion criterion : grade.getRubric().getCriteria()) {
+
+                if(criterion.title.equalsIgnoreCase(name))
+                {
+                    numArray.add(criterion.score);
+                }
+            }
+        }
+
+        double sum = 0.0, standardDeviation = 0.0;
+        int length = numArray.size();
+
+        for(double num : numArray) {
+            sum += num;
+        }
+
+        double mean = sum/length;
+
+        for(double num: numArray) {
+            standardDeviation += Math.pow(num - mean, 2);
+        }
+
+        return Math.sqrt(standardDeviation/length);
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 

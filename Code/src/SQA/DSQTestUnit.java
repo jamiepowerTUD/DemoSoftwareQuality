@@ -2,11 +2,12 @@ package SQA;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class DSQTestUnit
 {
-
 
     @Test
     public void testNewRubric()
@@ -150,7 +151,6 @@ public class DSQTestUnit
     }
 
 
-
     @Test
     public void testListAllGrades()
     {
@@ -165,6 +165,84 @@ public class DSQTestUnit
         c.addGrade("test",new Rubric("test"));
         assertEquals(1,c.listAllGrades().size());
     }
+
+    @Test
+    public void testGetGradesByRubricName()
+    {
+        Controller c = new Controller();
+        c.addGrade("test",new Rubric("test"));
+        assertEquals(1,c.getGradesByRubricName("test").size());
+    }
+
+    @Test
+    public void testGetGradesByRubricNameNotFound()
+    {
+        Controller c = new Controller();
+        c.addGrade("test",new Rubric("test"));
+        assertTrue(c.getGradesByRubricName("fail").isEmpty());
+    }
+
+    @Test
+    public void testRubricSummary()
+    {
+        Controller c = new Controller();
+        Rubric init = new Rubric("Code");
+        init.criteria.add(new Criterion("Design",0));
+        init.criteria.add(new Criterion("Implementation",0));
+        init.criteria.add(new Criterion("Documentation",0));
+        init.criteria.add(new Criterion("Testing",0));
+
+        c.rubrics.add(init);
+
+        Rubric initRubric = new Rubric("Code");
+        ArrayList<Criterion> initGrade =  new ArrayList<Criterion>();
+        initGrade.add(new Criterion("Design",2));
+        initGrade.add(new Criterion("Implementation",4));
+        initGrade.add(new Criterion("Testing",4));
+        initGrade.add(new Criterion("Documentation",2));
+        initRubric.setCriteria(initGrade);
+        c.grades.add(new Grade("Stephen Byrne",initRubric));
+
+        assertEquals(3.0,c.getRubricScoreAverage("Code"),0.1);
+        assertEquals(2,c.getRubricMin("Code"));
+        assertEquals(4,c.getRubricMax("Code"));
+        assertEquals(1.0,c.getRubricStdDev("Code"),1);
+
+    }
+
+    @Test
+    public void testCriterionSummary()
+    {
+        Controller c = new Controller();
+        Rubric init = new Rubric("Code");
+        init.criteria.add(new Criterion("Design",0));
+        init.criteria.add(new Criterion("Implementation",0));
+        init.criteria.add(new Criterion("Documentation",0));
+        init.criteria.add(new Criterion("Testing",0));
+
+        c.rubrics.add(init);
+
+        Rubric initRubric = new Rubric("Code");
+        ArrayList<Criterion> initGrade =  new ArrayList<Criterion>();
+        initGrade.add(new Criterion("Design",2));
+        initGrade.add(new Criterion("Implementation",4));
+        initGrade.add(new Criterion("Testing",4));
+        initGrade.add(new Criterion("Documentation",2));
+        initRubric.setCriteria(initGrade);
+        c.grades.add(new Grade("Stephen Byrne",initRubric));
+
+        assertEquals(2.0,c.getCriteriaAvg("Design"),1);
+        assertEquals(2,c.getCriterionMin("Design"));
+        assertEquals(2,c.getCriterionMax("Design"));
+        assertEquals(0.0,c.getCriterionStdDev("Design"),1);
+
+    }
+
+
+
+
+
+
 
 
 
