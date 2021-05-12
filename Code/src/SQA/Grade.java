@@ -2,6 +2,8 @@ package SQA;
 
 public class Grade {
 
+    // Grade object which stores a students name and Rubric with scored criterion
+
     String name ;
     Rubric rubric ;
 
@@ -11,19 +13,8 @@ public class Grade {
         this.rubric = rubric ;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Rubric getRubric() {
         return rubric;
     }
 
-    public void setRubric(Rubric rubric) {
-        this.rubric = rubric;
-    }
 }

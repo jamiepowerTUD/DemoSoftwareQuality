@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Rubric
 {
 
+    // A rubric has a title and a list of criterion
     String title ;
     ArrayList<Criterion> criteria ;
 
@@ -17,10 +18,6 @@ public class Rubric
 
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public ArrayList<Criterion> getCriteria() {
